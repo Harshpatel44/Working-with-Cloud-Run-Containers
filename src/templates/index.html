@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Serverless A2</title>
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="../static/main.css">
 </head>
 
 <body>
@@ -10,14 +10,14 @@
 <ul class="main-list">
 	<li class="li">
 		<div class="li-box">
-			<form action="/login" method="post">
+			<form action="login" method="post">
 				<div class="heading">Login</div>
 				<label>Username</label>
 				<input type="text">
 				<label>Password</label>
 				<input type="password">
 				<button type="submit">Login</button>
-				<label class="message"> Status here</label>
+				<label class="message"> status here</label>
 			</form>
 		</div>
 	</li>
@@ -38,7 +38,7 @@
 					<option>2nd Option</option>
 				</select>
 				<button type="submit">Register</button>
-				<label class="message"> Status here</label>
+				<label class="message"> status here</label>
 			</form>
 		</div>
 	</li>
@@ -46,7 +46,7 @@
 
 	<li class="li">
 		<div class="li-box">
-			<form action="/login" method="post">
+			<form action="/loginStatus" method="post">
 				<div class="heading">Login status</div>
 				<span>Hi, {{user}} you are logged in</span>
 				<button type="submit">Logout</button>
@@ -67,7 +67,6 @@
 			</form>
 		</div>
 	</li>
-
 </ul>
 </body>
 </html>
