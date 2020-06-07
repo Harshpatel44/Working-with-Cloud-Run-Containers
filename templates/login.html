@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Serverless A2</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+<div class="heading">Assignment 2 (Serverless Data Processing)</div>
+<ul class="main-list">
+	<li class="li">
+		<div class="li-box">
+			<form action="/login" method="post">
+				<div class="heading">Login</div>
+				<label>Username</label>
+				<input type="text">
+				<label>Password</label>
+				<input type="password">
+				<button type="submit">Login</button>
+				<label class="message"> Status here</label>
+			</form>
+		</div>
+	</li>
+
+	<li class="li">
+		<div class="li-box">
+			<form action="/register" method="post">
+				<div class="heading">Register</div>
+				<label>Username</label>
+				<input type="text">
+				<label>Email</label>
+				<input type="text">
+				<label>Password</label>
+				<input type="password">
+				<label>Select topic</label>
+				<select>
+					<option>1st Option</option>
+					<option>2nd Option</option>
+				</select>
+				<button type="submit">Register</button>
+				<label class="message"> Status here</label>
+			</form>
+		</div>
+	</li>
+
+
+	<li class="li">
+		<div class="li-box">
+			<form action="/login" method="post">
+				<div class="heading">Login status</div>
+				<span>Hi, {{user}} you are logged in</span>
+				<button type="submit">Logout</button>
+				<div id="online-users">
+					<span>Here are other users who are online</span>
+					<ul class="online-users-class">
+						<li>User1</li>
+						<li>User2</li>
+						<li>User3</li>
+						<li>User1</li>
+						<li>User2</li>
+						<li>User3</li>
+						<li>User1</li>
+						<li>User2</li>
+						<li>User2</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+	</li>
+
+</ul>
+</body>
+</html>
