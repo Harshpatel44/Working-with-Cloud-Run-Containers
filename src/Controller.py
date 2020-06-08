@@ -1,34 +1,69 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template,redirect
 from flask import request
 
-from Injector import Injector
+from src.Service import Service
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def main_page():
-    return render_template('index.html')
+    onlineUsers = Service().getOnlineUsersService()
+    return render_template('index.html', onlineUsers = onlineUsers)
+
 
 @app.route('/login',methods=['POST'])
 def login_submit():
     userName=request.form['loginUsername']
     password=request.form['loginPassword']
-    Injector.instance(Injector()).getService().loginService(userName,password)
-    return render_template('index.html')
+
+
+    loginMessage=Service().loginService(userName,password)
+    onlineUsers = Service().getOnlineUsersService()
+    print(onlineUsers)
+    if(loginMessage=="User created"):
+        if (onlineUsers != []):
+            onlineUsers.remove(userName)
+            userActive=userName
+    else:
+        #onlineUsers=[]
+        userActive=''
+
+    return render_template('index.html', loginStatus=loginMessage, onlineUsers=onlineUsers, userActive=userActive)
+
+
 
 @app.route('/register',methods=['POST'])
 def register_submit():
+    registerUserName = request.form['registerUserName']
+    registerEmail = request.form['registerEmail']
+    registerPassword = request.form['registerPassword']
+    registerTopic = request.form['registerTopic']
 
-    return redirect()
+    onlineUsers = Service().getOnlineUsersService()
+
+    if(registerUserName=='' or registerEmail=='' or registerPassword=='' or registerTopic==''):
+        registerMessage="Please Enter all fields"
+        return render_template('index.html', registrationStatus=registerMessage, onlineUsers=onlineUsers)
+
+    if(Service().registerService(registerUserName,registerEmail,registerPassword,registerTopic)):
+        registerMessage="Registration successfull"
+
+    else:
+        registerMessage="Registration unsucessfull"
+
+    return render_template('index.html', registrationStatus=registerMessage,onlineUsers = onlineUsers)
+
+
 @app.route('/logout',methods=['POST'])
 def logout_submit():
-    return render_template('index.html')
+    userToLogout=request.form['userNameActive']
+    print(userToLogout)
+    Service().logoutService(userToLogout)
+    onlineUsers = Service().getOnlineUsersService()
+    return render_template('index.html',onlineUsers = onlineUsers)
 
-@app.route('/loginStatus',methods=['POST'])
-def login_status():
-    return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run()

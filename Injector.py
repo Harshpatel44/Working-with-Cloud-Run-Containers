@@ -10,9 +10,8 @@ class Injector:
         self.Repo = Repo()
         self.Service = Service()
         self.Database = Database()
-        
+
     def instance(self):
-        # global _instance
         if (self._instance == False):
             _instance = Injector()
         return _instance

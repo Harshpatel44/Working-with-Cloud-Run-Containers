@@ -2,17 +2,18 @@ import mysql.connector
 
 class Database:
     def __init__(self):
-        print('db init')
+        pass
 
-    def configureDb(self, host, database, user, password):
+    def configureDb(self, host, database, user, password,port):
         return mysql.connector.connect(
             host=host,
             database=database,
             user=user,
-            password=password)
+            password=password,
+            port=port)
     def connectDB(self):
-        self.object = self.connectRDS("database-1.ceofxztsta8i.us-east-1.rds.amazonaws.com", "sampleDB", "admin",
-                                 "amazonrds")
+        self.object = self.configureDb("serverless-a2.cdvxuztseuhu.us-east-1.rds.amazonaws.com", "serverless-A2", "admin",
+                                 "amazonrds",3305)
 
     def executeQuery(self, query):
         cur = self.object.cursor()
@@ -26,7 +27,7 @@ class Database:
     def executeQueryWithResults(self,query):
         cur = self.object.cursor()
         cur.execute(query)
-        results=cur.fetchone()
+        results=cur.fetchall()
         self.object.commit()
         cur.close()
         self.object.close()

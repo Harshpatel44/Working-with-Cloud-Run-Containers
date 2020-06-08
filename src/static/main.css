@@ -72,3 +72,14 @@ span{
 	list-style-type: none;
 	border:1px solid black;
 }
+
+.users-block{
+	display: inline;
+}
+
+.userActiveeInput{
+	display: block;
+	width: 100%;
+	text-align: center;
+	background-color: white;
+}

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Serverless A2</title>
-	<link rel="stylesheet" href="../static/main.css">
+	<link rel="stylesheet" href={{url_for('static', filename='main.css')}}>
 </head>
 
 <body>
@@ -10,35 +10,36 @@
 <ul class="main-list">
 	<li class="li">
 		<div class="li-box">
-			<form action="login" method="post">
+			<form action="login" method="POST">
 				<div class="heading">Login</div>
 				<label>Username</label>
 				<input type="text" name="loginUsername">
 				<label>Password</label>
 				<input type="password" name="loginPassword">
 				<button type="submit">Login</button>
-				<label class="message"> status here</label>
+				<label class="message" name="loginStatus"> {{loginStatus}}</label>
 			</form>
 		</div>
 	</li>
 
 	<li class="li">
 		<div class="li-box">
-			<form action="/register" method="post">
+			<form action="/register" method="POST">
 				<div class="heading">Register</div>
 				<label>Username</label>
-				<input type="text">
+				<input type="text" name="registerUserName">
 				<label>Email</label>
-				<input type="text">
+				<input type="text" name="registerEmail">
 				<label>Password</label>
-				<input type="password">
+				<input type="password" name="registerPassword">
 				<label>Select topic</label>
-				<select>
+				<select name="registerTopic">
 					<option>1st Option</option>
 					<option>2nd Option</option>
+                    <option>3nd Option</option>
 				</select>
 				<button type="submit">Register</button>
-				<label class="message"> status here</label>
+				<label class="message" name="registerStatus"> {{ registrationStatus }}</label>
 			</form>
 		</div>
 	</li>
@@ -46,22 +47,20 @@
 
 	<li class="li">
 		<div class="li-box">
-			<form action="/loginStatus" method="post">
+			<form action="/logout" method="POST">
 				<div class="heading">Login status</div>
-				<span>Hi, {{user}} you are logged in</span>
+                <span>Hi, </span>
+                <input class="userActiveeInput" name="userNameActive" value="{{userActive}}" readonly>
+                <span>you are logged in</span>
 				<button type="submit">Logout</button>
 				<div id="online-users">
 					<span>Here are other users who are online</span>
 					<ul class="online-users-class">
-						<li>User1</li>
-						<li>User2</li>
-						<li>User3</li>
-						<li>User1</li>
-						<li>User2</li>
-						<li>User3</li>
-						<li>User1</li>
-						<li>User2</li>
-						<li>User2</li>
+                        {%  for users in onlineUsers %}
+                        <li>
+                            <label class="users-block" for="{{ users }}">{{ users }}</label>
+                        </li>
+                        {% endfor %}
 					</ul>
 				</div>
 			</form>
