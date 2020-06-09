@@ -12,8 +12,8 @@ class Database:
             password=password,
             port=port)
     def connectDB(self):
-        self.object = self.configureDb("serverless-a2.cdvxuztseuhu.us-east-1.rds.amazonaws.com", "serverless-A2", "admin",
-                                 "amazonrds",3305)
+        self.object = self.configureDb("35.236.239.82", "serverless-a2", "root",
+                                 "googlecloud",3306)
 
     def executeQuery(self, query):
         cur = self.object.cursor()
