@@ -1,6 +1,5 @@
 from Database import Database
 from datetime import datetime
-from passwordEncrypt import Passwd
 
 class Repo:
     def __init__(self):
