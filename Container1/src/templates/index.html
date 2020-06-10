@@ -13,9 +13,9 @@
 			<form action="login" method="POST">
 				<div class="heading">Login</div>
 				<label>Username</label>
-				<input type="text" name="loginUsername">
+				<input type="text" name="loginUsername" required>
 				<label>Password</label>
-				<input type="password" name="loginPassword">
+				<input type="password" name="loginPassword" required>
 				<button type="submit">Login</button>
 				<label class="message" name="loginStatus"> {{loginStatus}}</label>
 			</form>
@@ -27,11 +27,11 @@
 			<form action="/register" method="POST">
 				<div class="heading">Register</div>
 				<label>Username</label>
-				<input type="text" name="registerUserName">
+				<input type="text" name="registerUserName" required>
 				<label>Email</label>
-				<input type="text" name="registerEmail">
+				<input type="text" name="registerEmail" required>
 				<label>Password</label>
-				<input type="password" name="registerPassword">
+				<input type="password" name="registerPassword" required>
 				<label>Select topic</label>
 				<select name="registerTopic">
 					<option>1st Option</option>

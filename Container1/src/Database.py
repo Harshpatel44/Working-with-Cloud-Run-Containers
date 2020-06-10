@@ -17,8 +17,6 @@ class Database:
 
     def executeQuery(self, query):
         cur = self.object.cursor()
-        # query = 'INSERT INTO users (userID,Password) VALUES ({0},"{1}")'.format(str(user_id),
-        #                                                                         encrypted_password)
         cur.execute(query)
         self.object.commit()
         cur.close()

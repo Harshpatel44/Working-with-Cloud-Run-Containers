@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Serverless A2</title>
+	<link rel="stylesheet" href={{url_for('static', filename='main.css')}}>
+</head>
+
+<body>
+<div class="heading">Assignment 2 (Serverless Data Processing)</div>
+<ul class="main-list">
+	<li class="li">
+		<div class="li-box">
+			<form action="login" method="POST">
+				<div class="heading">Login</div>
+				<label>Username</label>
+				<input type="text" name="loginUsername" required>
+				<label>Password</label>
+				<input type="password" name="loginPassword" required>
+				<button type="submit">Login</button>
+				<label class="message" name="loginStatus"> {{loginStatus}}</label>
+			</form>
+		</div>
+	</li>
+
+	<li class="li">
+		<div class="li-box">
+			<form action="/register" method="POST">
+				<div class="heading">Register</div>
+				<label>Username</label>
+				<input type="text" name="registerUserName" required>
+				<label>Email</label>
+				<input type="text" name="registerEmail" required>
+				<label>Password</label>
+				<input type="password" name="registerPassword" required>
+				<label>Select topic</label>
+				<select name="registerTopic">
+					<option>1st Option</option>
+					<option>2nd Option</option>
+                    <option>3nd Option</option>
+				</select>
+				<button type="submit">Register</button>
+				<label class="message" name="registerStatus"> {{ registrationStatus }}</label>
+			</form>
+		</div>
+	</li>
+
+
+	<li class="li">
+		<div class="li-box">
+			<form action="/logout" method="POST">
+				<div class="heading">Login status</div>
+                <span>Hi, </span>
+                <input class="userActiveeInput" name="userNameActive" value="{{userActive}}" readonly>
+                <span>you are logged in</span>
+				<button type="submit">Logout</button>
+				<div id="online-users">
+					<span>Here are other users who are online</span>
+					<ul class="online-users-class">
+                        {%  for users in onlineUsers %}
+                        <li>
+                            <label class="users-block" for="{{ users }}">{{ users }}</label>
+                        </li>
+                        {% endfor %}
+					</ul>
+				</div>
+			</form>
+		</div>
+	</li>
+
+</ul>
+</body>
+</html>
