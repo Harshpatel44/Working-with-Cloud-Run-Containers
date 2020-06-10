@@ -1,4 +1,4 @@
-from Repository import Repo
+from src.Repository import Repo
 
 class Service:
     def __init__(self):

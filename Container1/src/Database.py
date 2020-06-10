@@ -1,16 +1,21 @@
-import mysql.connector
+import pymysql
+import os
 
 class Database:
     def __init__(self):
         pass
 
     def configureDb(self, host, database, user, password,port):
-        return mysql.connector.connect(
-            host=host,
-            database=database,
-            user=user,
-            password=password,
-            port=port)
+
+        if os.environ.get('GAE_ENV') == 'standard':
+            unix_socket = '/cloudsql/{}'.format('axial-mercury-279803:us-east4:serverless-a2')
+            return pymysql.connect(user=user, password=password,
+                                  unix_socket=unix_socket, db=database)
+        else:
+
+            return pymysql.connect(user=user, password=password,
+                                  host='127.0.0.1', db=database)
+
     def connectDB(self):
         self.object = self.configureDb("35.236.239.82", "serverless-a2", "root",
                                  "googlecloud",3306)

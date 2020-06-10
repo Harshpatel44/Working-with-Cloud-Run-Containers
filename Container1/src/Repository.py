@@ -1,5 +1,5 @@
-from Database import Database
-from passwordEncrypt import Passwd
+from src.Database import Database
+from src.passwordEncrypt import Passwd
 
 class Repo:
     def __init__(self):
