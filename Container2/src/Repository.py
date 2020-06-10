@@ -39,18 +39,6 @@ class Repo:
             print(e)
             return "User doesn't exist"
 
-    def registerRepo(self, registerUserName, registerEmail, registerPassword, registerTopic):
-        encrypted_password=Passwd().encrypt(registerPassword)
-        try:
-            db = Database()
-            db.connectDB()
-            db.executeQuery('insert into userInfo values("{0}","{1}","{2}","{3}")'.format(registerUserName, registerEmail,
-                                                                                          encrypted_password, registerTopic))
-            return True
-        except Exception as e:
-            print(e)
-            return False
-
     def getOnlineUsersRepo(self):
         list=[]
         try:
@@ -64,9 +52,3 @@ class Repo:
             print(e)
             return list
 
-    def logoutServiceRepo(self, username):
-        try:
-            self.activateState(username,'offline')
-            return True
-        except Exception as e:
-            return False

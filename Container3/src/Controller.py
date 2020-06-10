@@ -6,10 +6,6 @@ from Service import Service
 
 app = Flask(__name__)
 
-# @app.route('/')
-# def main_page():
-#     onlineUsers = Service().getOnlineUsersService()
-#     return render_template('index.html', onlineUsers = onlineUsers)
 
 @app.route('/logout',methods=['POST'])
 def logout_submit():

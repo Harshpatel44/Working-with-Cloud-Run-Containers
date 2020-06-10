@@ -14,7 +14,7 @@ class Database:
     def connectDB(self):
         self.object = self.configureDb("35.236.239.82", "serverless-a2", "root",
                                  "googlecloud",3306)
-
+        print("conneceted")
     def executeQuery(self, query):
         cur = self.object.cursor()
         cur.execute(query)

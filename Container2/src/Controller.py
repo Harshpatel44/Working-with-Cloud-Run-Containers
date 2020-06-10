@@ -6,12 +6,6 @@ from Service import Service
 
 app = Flask(__name__)
 
-# @app.route('/')
-# def main_page():
-#     onlineUsers = Service().getOnlineUsersService()
-#     return render_template('index.html', onlineUsers = onlineUsers)
-
-
 @app.route('/login',methods=['POST'])
 def login_submit():
     userName=request.form['loginUsername']
@@ -26,7 +20,6 @@ def login_submit():
             onlineUsers.remove(userName)
             userActive=userName
     else:
-        #onlineUsers=[]
         userActive=''
 
     return render_template('index.html', loginStatus=loginMessage, onlineUsers=onlineUsers, userActive=userActive)

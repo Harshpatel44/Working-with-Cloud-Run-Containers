@@ -3,4 +3,3 @@ Flask-SocketIO==4.2.1
 Flask-SQLAlchemy==2.4.1
 Flask-WTF==0.14.3
 mysql-connector==2.2.9
-mysql-connector-python-rf==2.2.2
