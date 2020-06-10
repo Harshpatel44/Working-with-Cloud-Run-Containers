@@ -1,4 +1,4 @@
-from src.Repository import Repo
+from Repository import Repo
 
 
 class Service:
