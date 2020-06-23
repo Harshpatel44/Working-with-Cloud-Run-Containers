@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template,redirect
 from flask import request
 
-from src.Service import Service
+from Service import Service
 
 app = Flask(__name__)
 
